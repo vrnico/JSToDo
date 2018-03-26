@@ -15,11 +15,25 @@ export class AppComponent {
   inputTask: string = prompt('Enter a new task.');
   // addTask: Task = new Task(this.inputTask);
   tasks: Task[] = [
-    new Task('Finish weekend Angular homework for Epicodus course'),
-    new Task('Begin brainstorming possible JS group projects'),
-    new Task('Add README file to last few Angular repos on Github'),
-    new Task(this.inputTask)
+    new Task('Finish weekend Angular homework for Epicodus course', 3),
+    new Task('Begin brainstorming possible JS group projects', 1),
+    new Task('Add README file to last few Angular repos on Github', 2),
+    new Task(this.inputTask, 1)
   ];
+
+  editTask() {
+    alert("time to edit a task!");
+  }
+
+  priorityColor(currentTask) {
+    if (currentTask.priority === 3) {
+      return "bg-danger";
+    } else if (currentTask.priority ===2) {
+      return "bg-warning";
+    } else {
+      return "bg-info";
+    }
+  }
   // firstTask: Task = new Task("Finish weekend Angular homework for Epicodus Course");
   // console.log($tasks[0]);
 }
