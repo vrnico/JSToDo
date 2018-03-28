@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../models/task.model';
 
 @Component({
@@ -6,14 +6,13 @@ import { Task } from '../models/task.model';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent {
   @Input() childTaskList: Task[];
   @Output() clickSender = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  filterByCompleteness: string = "incompleteTasks";
 
   editButtonClicked(taskToEdit: Task) {
     this.clickSender.emit(taskToEdit);
@@ -27,5 +26,9 @@ export class TaskListComponent implements OnInit {
     } else {
       return "bg-info";
     }
+  }
+
+  onChange(optionFromMenu){
+    this.filterByCompleteness = optionFromMenu;
   }
 }
