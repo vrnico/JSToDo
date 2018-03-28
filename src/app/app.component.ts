@@ -12,32 +12,20 @@ export class AppComponent {
   month: number = this.currentTime.getMonth() + 1;
   day: number = this.currentTime.getDate();
   year: number = this.currentTime.getFullYear();
-  inputTask: string = prompt('Enter a new task.');
-  // addTask: Task = new Task(this.inputTask);
-  tasks: Task[] = [
+  selectedTask = null;
+
+  masterTaskList: Task[] = [
     new Task('Finish weekend Angular homework for Epicodus course', 3),
     new Task('Begin brainstorming possible JS group projects', 1),
-    new Task('Add README file to last few Angular repos on Github', 2),
-    new Task(this.inputTask, 1)
+    new Task('Add README file to last few Angular repos on Github', 2)
   ];
 
-  editTask() {
-    alert("time to edit a task!");
+  editTask(clickedTask) {
+    this.selectedTask = clickedTask;
   }
 
-  priorityColor(currentTask) {
-    if (currentTask.priority === 3) {
-      return "bg-danger";
-    } else if (currentTask.priority ===2) {
-      return "bg-warning";
-    } else {
-      return "bg-info";
-    }
+  finishedEditing() {
+    this.selectedTask = null;
   }
-  // firstTask: Task = new Task("Finish weekend Angular homework for Epicodus Course");
-  // console.log($tasks[0]);
+
 }
-// let inputTask: string = prompt('Enter a new task.');
-// console.log(new Task(inputTask););
-// new Task(inputTask);
-// console.log(tasks);
